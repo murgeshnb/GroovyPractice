@@ -1,0 +1,49 @@
+plugins {
+    id 'groovy'
+    id 'java'
+}
+
+group 'org.example'
+version '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral{
+
+    }
+}
+
+
+
+dependencies {
+    implementation 'org.apache.groovy:groovy:4.0.2'
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.8.1'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.8.1'
+
+    // https://mvnrepository.com/artifact/org.seleniumhq.selenium/selenium-java
+    implementation group: 'org.seleniumhq.selenium', name: 'selenium-java', version: '3.141.59'
+}
+
+test {
+    useJUnitPlatform()
+}
+
+task demoTask{
+    group "Custom task"
+    description "gradle custom task Example"
+    doLast{
+        println "hii welcome to gradle, it's a custom task example";
+    }
+}
+demoTask.enabled=false
+
+task A{
+    group "Custom task"
+    doFirst{
+            println "hello welcome to gradle";
+    }
+    doLast{
+            println "bye bye tata khatam";
+    }
+}
+
+
